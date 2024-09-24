@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const PostPage = () => {
@@ -38,6 +38,9 @@ const PostPage = () => {
                     <h1>{post.title}</h1>
                     <p>Published on: {new Date(post.createdAt).toLocaleDateString()}</p>
                     <div>{post.content}</div>
+                    <Link to="/" style={{ marginTop: '20px', display: 'block', textAlign: 'center' }}>
+                        <button>Back to Home</button>
+                    </Link> {/* Added a "Back to Home" button */}
                 </>
             ) : (
                 <p>Post not found</p>

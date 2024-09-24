@@ -63,6 +63,9 @@ const PostManagement = () => {
             ) : (
                 <p>No posts found</p>
             )}
+            <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                <button onClick={() => navigate('/')}>Back to Home</button> {/* Single button for the entire page */}
+            </div>
         </div>
     );
 };
