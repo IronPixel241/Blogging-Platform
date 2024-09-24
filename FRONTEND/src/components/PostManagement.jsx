@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from '../styles/PostManagement.module.css'; // Importing CSS module
 
 const PostManagement = () => {
     const [posts, setPosts] = useState([]);
@@ -47,7 +48,7 @@ const PostManagement = () => {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Manage Your Posts</h1>
             {posts.length > 0 ? (
                 <ul>
@@ -55,16 +56,18 @@ const PostManagement = () => {
                         <li key={post._id}>
                             <h3>{post.title}</h3>
                             <p>{new Date(post.createdAt).toLocaleDateString()}</p>
-                            <button onClick={() => handleEdit(post._id)}>Edit</button>
-                            <button onClick={() => handleDelete(post._id)}>Delete</button>
+                            <div>
+                                <button onClick={() => handleEdit(post._id)}>Edit</button>
+                                <button onClick={() => handleDelete(post._id)}>Delete</button>
+                            </div>
                         </li>
                     ))}
                 </ul>
             ) : (
                 <p>No posts found</p>
             )}
-            <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                <button onClick={() => navigate('/')}>Back to Home</button> {/* Single button for the entire page */}
+            <div className={styles.backButtonContainer}>
+                <button className={styles.backButton} onClick={() => navigate('/')}>Back to Home</button> {/* Single button for the entire page */}
             </div>
         </div>
     );

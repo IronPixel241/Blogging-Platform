@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import styles from '../styles/CreateEditPost.module.css'; // Import the CSS module
 
 const CreateEditPost = () => {
   const { id } = useParams(); // for edit mode
@@ -29,23 +30,29 @@ const CreateEditPost = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>{id ? 'Edit Post' : 'Create Post'}</h1>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <textarea
-        placeholder="Content"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        required
-      />
-      <button type="submit">{id ? 'Update Post' : 'Create Post'}</button>
-    </form>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h1 className={styles.title}>{id ? 'Edit Post' : 'Create Post'}</h1>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          className={styles.input}
+        />
+        <textarea
+          placeholder="Content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+          className={styles.textarea}
+        />
+        <button type="submit" className={styles.button}>
+          {id ? 'Update Post' : 'Create Post'}
+        </button>
+      </form>
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import styles from '../styles/PostList.module.css'; // Importing CSS module
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
@@ -15,16 +16,16 @@ const PostList = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Blog Posts</h1>
-      <div>
-        <Link to="/create">Create New Post</Link>
-        <Link to="/manage" style={{ marginLeft: '10px' }}>Manage Posts</Link> {/* New link for managing posts */}
+      <div className={styles.linkContainer}>
+        <Link to="/create" className={styles.link}>Create New Post</Link>
+        <Link to="/manage" className={styles.link} style={{ marginLeft: '10px' }}>Manage Posts</Link> {/* New link for managing posts */}
       </div>
       <ul>
         {posts.map(post => (
           <li key={post._id}>
-            <Link to={`/post/${post._id}`}>
+            <Link to={`/post/${post._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
               <h2>{post.title}</h2>
               <p>{post.summary}</p>
               <small>{new Date(post.createdAt).toLocaleDateString()}</small>
