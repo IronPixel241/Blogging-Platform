@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PostList from './PostList';
-import PostPage from './PostPage';
-import CreateEditPost from './CreateEditPost';
-import PostManagement from './PostManagement';
+import PostList from './components/PostList';
+import PostPage from './components/PostPage';
+import CreateEditPost from './components/CreateEditPost';
+import PostManagement from './components/PostManagement';
 
 const App = () => (
   <Router>
